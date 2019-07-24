@@ -1,7 +1,11 @@
+const Header = () => <h1>Pomodoro Clock</h1>
+
 class App extends React.Component {
     render() {
         return(
-            <div>Pomodoro Clock</div>
+            <div>
+                <Header/>
+            </div>
         )
     }
 }
