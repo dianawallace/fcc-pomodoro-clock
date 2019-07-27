@@ -11,14 +11,14 @@ const SetTimer = ({ type }) => (
     </div>
 )
 class App extends React.Component {
-    constructor(props)
+    constructor(props) {
         super(props)
         this.state = {
             breakValue: 5,
             sessionValue: 25
         }
     }
-    
+
     render() {
         return(
             <div>
