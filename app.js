@@ -4,9 +4,9 @@ const SetTimer = ({ type }) => (
     <div>
         <div id={`${type}-label`}>{`${type} Length`}></div>        
         <div>
-            <button id={`${type}-decrement`}></button>
+            <button id={`${type}-decrement`}>&darr;</button>
             <div></div>
-            <button id={`${type}-increment`}></button>
+            <button id={`${type}-increment`}>&uarr;</button>
         </div>
     </div>
 )
