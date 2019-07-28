@@ -1,11 +1,11 @@
 const Header = () => <h1>Pomodoro Clock</h1>
 
-const SetTimer = ({ type }) => (
+const SetTimer = ({ type, value }) => (
     <div>
         <div id={`${type}-label`}>{`${type} Length`}></div>        
         <div>
             <button id={`${type}-decrement`}>&darr;</button>
-            <div></div>
+            <div id={`${type}-length`}>{value}</div>
             <button id={`${type}-increment`}>&uarr;</button>
         </div>
     </div>
@@ -24,8 +24,8 @@ class App extends React.Component {
             <div>
                 <Header/>
                 <div>
-                    <SetTimer type='Break' />
-                    <SetTimer type='Session' />
+                    <SetTimer type='Break' value={this.state.breakValue}/>
+                    <SetTimer type='Session' value={this.state.sessionValue}/>
                 </div>
             </div>
 
