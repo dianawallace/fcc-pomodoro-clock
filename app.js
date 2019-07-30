@@ -3,7 +3,7 @@ const Header = () => <h1>Pomodoro Clock</h1>
 const SetTimer = ({ type, value }) => (
     <div className='setTimer'>
         <div id={`${type}-label`}>{`${type} Length`}></div>        
-        <div>
+        <div className='setTimer-controls'>
             <button id={`${type}-decrement`}>&darr;</button>
             <div id={`${type}-length`}>{value}</div>
             <button id={`${type}-increment`}>&uarr;</button>
