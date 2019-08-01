@@ -23,7 +23,7 @@ class App extends React.Component {
         return(
             <div>
                 <Header/>
-                <div>
+                <div className='settings'>
                     <SetTimer type='Break' value={this.state.breakValue}/>
                     <SetTimer type='Session' value={this.state.sessionValue}/>
                 </div>
