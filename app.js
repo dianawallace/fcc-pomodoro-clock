@@ -13,10 +13,12 @@ const SetTimer = ({ type, value }) => (
 
 const Timer = ({ mode, time}) => (
     <div className='Timer'>
-        <h1>{mode === 'session' ? 'Session ' : 'Break '}</h1>
-        <h1>{time}</h1>
+        <h1 id='timer-label'>{mode === 'session' ? 'Session ' : 'Break '}</h1>
+        <h1 id='timer-left'>{time}</h1>
     </div>
 )
+
+
 class App extends React.Component {
     constructor(props) {
         super(props)
