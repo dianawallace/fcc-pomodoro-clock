@@ -37,6 +37,12 @@ class App extends React.Component {
         }
     }
 
+    handleSetTimers = (inc, type) => {
+        if (inc && this.state[type] === 60 && inc) return
+        if (!inc && this.state[type] === 1 && !inc) return
+        this.setState({ [type]: this.state[type] + (inc ? 1 : -1) })
+      }
+
     render() {
         return(
             <div>
