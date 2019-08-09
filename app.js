@@ -6,7 +6,7 @@ const SetTimer = ({ type, value, handleClick }) => (
         <div className='setTimer-controls'>
             <button id={`${type}-decrement`} onClick={() => handleClick(false, `${type}Value`)}>&darr;</button>
             <div id={`${type}-length`}>{value}</div>
-            <button id={`${type}-increment`} onClick={() => handleClick(false, `${type}Value`)}>&uarr;</button>
+            <button id={`${type}-increment`} onClick={() => handleClick(true, `${type}Value`)}>&uarr;</button>
         </div>
     </div>
 )
