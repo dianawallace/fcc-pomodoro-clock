@@ -55,7 +55,7 @@ class App extends React.Component {
                     <SetTimer type='break' value={this.state.breakValue} handleClick={this.handleSetTimers}/>
                     <SetTimer type='session' value={this.state.sessionValue} handleClick={this.handleSetTimers}/>
                 </div>
-                <Timer Mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
+                <Timer mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
                 <Controls active={this.state.active} handleReset={this.handleReset}/>
             </div>
 
