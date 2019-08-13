@@ -32,7 +32,7 @@ class App extends React.Component {
             breakValue: 5,
             sessionValue: 25,
             mode: 'session',
-            time: 25,
+            time: 25 * 60 * 1000,
             active: false
         }
     }
