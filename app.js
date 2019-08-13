@@ -18,9 +18,9 @@ const Timer = ({ mode, time}) => (
     </div>
 )
 
-const Controls = ({ active, handleReset}) => (
+const Controls = ({ active, handleReset, handlePlayPause }) => (
     <div className='Controls'>
-    <button id='start_stop'>{ active ? <span>&#10074;&#10074;</span> : <span>&#9658;</span> }</button>
+    <button id='start_stop' onClick={handlePlayPause}>{ active ? <span>&#10074;&#10074;</span> : <span>&#9658;</span> }</button>
     <button id='reset' onClick={handleReset}>&#8635;</button>
     </div>
 )
@@ -47,6 +47,10 @@ class App extends React.Component {
         this.setState({ breakValue: 5, sessionValue: 25, time: 25 * 60 * 1000 })
     }
 
+    handlePlayPause = () => {
+        this.setState({ active: !this.state.active })
+    }
+
     render() {
         return(
             <div>
@@ -56,7 +60,7 @@ class App extends React.Component {
                     <SetTimer type='session' value={this.state.sessionValue} handleClick={this.handleSetTimers}/>
                 </div>
                 <Timer mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
-                <Controls active={this.state.active} handleReset={this.handleReset}/>
+                <Controls active={this.state.active} handlePlayPause={this.handlePlayPause} handleReset={this.handleReset}/>
             </div>
 
         )
