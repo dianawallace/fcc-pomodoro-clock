@@ -49,6 +49,7 @@ class App extends React.Component {
 
     handlePlayPause = () => {
         this.setState({ active: !this.state.active })
+        this.pomodoro = setInterval(()  => this.setState({ time: this.state.time - 1000}), 1000)
     }
 
     render() {
