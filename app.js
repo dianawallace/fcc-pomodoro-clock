@@ -33,7 +33,8 @@ class App extends React.Component {
             sessionValue: 25,
             mode: 'session',
             time: 25 * 60 * 1000,
-            active: false
+            active: false,
+            touched: false
         }
     }
 
@@ -53,8 +54,14 @@ class App extends React.Component {
             clearInterval(this.pomodoro)
             this.setState({ active: false })
         }   else {
+                if (this.state.touched) {                
                 this.pomodoro = setInterval(()  => this.setState({ time: this.state.time - 1000}), 1000)
                 this.setState({ active: true })
+              } else {
+                    this.setState({ time: this.state.sessionValue * 60 * 1000, 
+                        touched: true,
+                        active: true }, () => this.pomodoro = setInterval(()  => this.setState({ time: this.state.time - 1000}), 1000))         
+            }
             }
     }
 
