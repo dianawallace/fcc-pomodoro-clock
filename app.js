@@ -45,7 +45,12 @@ class App extends React.Component {
       }
 
     handleReset = () => {
-        this.setState({ breakValue: 5, sessionValue: 25, time: 25 * 60 * 1000 })
+        this.setState({ breakValue: 5, 
+            sessionValue: 25, 
+            time: 25 * 60 * 1000,
+            touched: false,
+            active: false
+        })
         clearInterval(this.pomodoro)
     }
 
