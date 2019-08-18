@@ -38,6 +38,15 @@ class App extends React.Component {
         }
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.time === 0 && prevState.mode === 'session') {
+            this.setState({time: this.state.breakValue * 60 * 1000, mode: 'break'})
+        }
+        if (prevState.time === 0 && prevState.mode === 'break') {
+            this.setState({ time: this.state.sessionValue * 60 * 1000, mode: 'session'})
+        }
+    }
+
     handleSetTimers = (inc, type) => {
         if (inc && this.state[type] === 60 && inc) return
         if (!inc && this.state[type] === 1 && !inc) return
