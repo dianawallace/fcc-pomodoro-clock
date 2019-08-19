@@ -41,9 +41,11 @@ class App extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         if (prevState.time === 0 && prevState.mode === 'session') {
             this.setState({time: this.state.breakValue * 60 * 1000, mode: 'break'})
+            this.audio.play()
         }
         if (prevState.time === 0 && prevState.mode === 'break') {
             this.setState({ time: this.state.sessionValue * 60 * 1000, mode: 'session'})
+            this.audio.play()
         }
     }
 
@@ -61,6 +63,8 @@ class App extends React.Component {
             active: false
         })
         clearInterval(this.pomodoro)
+        this.audio.pause()
+        this.audio.currentTime = 0
     }
 
     handlePlayPause = () => {
@@ -88,7 +92,15 @@ class App extends React.Component {
                     <SetTimer type='session' value={this.state.sessionValue} handleClick={this.handleSetTimers}/>
                 </div>
                 <Timer mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
-                <Controls active={this.state.active} handlePlayPause={this.handlePlayPause} handleReset={this.handleReset}/>
+                <Controls 
+                active={this.state.active} 
+                handlePlayPause={this.handlePlayPause} 
+                handleReset={this.handleReset}/>
+                <audio 
+                id='beep' 
+                src='https://s3-us-west-1.amazonaws.com/benjaminadk/Data+synth+beep+high+and+sweet.mp3'
+                ref={ref => this.audio = ref}>
+                </audio>
             </div>
 
         )
