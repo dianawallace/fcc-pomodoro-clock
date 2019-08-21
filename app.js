@@ -1,11 +1,11 @@
 const Header = () => <h1>Pomodoro Clock</h1>
 
 const SetTimer = ({ type, value, handleClick }) => (
-    <div className='setTimer'>
+    <div className='SetTimer'>
         <div id={`${type}-label`}>{`${type === 'session' ? 'Session ' : 'Break '} Length`}</div>        
-        <div className='setTimer-controls'>
+        <div className='SetTimer-controls'>
             <button id={`${type}-decrement`} onClick={() => handleClick(false, `${type}Value`)}>&darr;</button>
-            <div id={`${type}-length`}>{value}</div>
+            <h1 id={`${type}-length`}>{value}</h1>
             <button id={`${type}-increment`} onClick={() => handleClick(true, `${type}Value`)}>&uarr;</button>
         </div>
     </div>
@@ -80,7 +80,8 @@ class App extends React.Component {
               } else {
                     this.setState({ time: this.state.sessionValue * 60 * 1000, 
                         touched: true,
-                        active: true }, () => this.pomodoro = setInterval(()  => this.setState({ time: this.state.time - 1000}), 1000))         
+                        active: true 
+                    }, () => this.pomodoro = setInterval(()  => this.setState({ time: this.state.time - 1000}), 1000))         
             }
             }
     }
@@ -90,8 +91,16 @@ class App extends React.Component {
             <div>
                 <Header/>
                 <div className='settings'>
-                    <SetTimer type='break' value={this.state.breakValue} handleClick={this.handleSetTimers}/>
-                    <SetTimer type='session' value={this.state.sessionValue} handleClick={this.handleSetTimers}/>
+                    <SetTimer 
+                        type='break'
+                        label='Break Length' 
+                        value={this.state.breakValue} 
+                        handleClick={this.handleSetTimers}/>
+                    <SetTimer 
+                        type='session' 
+                        label='Session Length'
+                        value={this.state.sessionValue} 
+                        handleClick={this.handleSetTimers}/>
                 </div>
                 <Timer mode={this.state.mode} time={moment(this.state.time).format('mm:ss')}/>
                 <Controls 
